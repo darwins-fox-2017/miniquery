@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>miniquery</title>
     <style media="screen">
-      .container {
-        font-size: 2em;
-      }
+        .container {
+            font-size: 2em;
+        }
 
-      .shaded {
-        color: gray;
-      }
+        .shaded {
+            color: gray;
+        }
     </style>
     <script src="lib/miniquery.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <h3>Hall of Demos</h3>
 
     <button type="button" name="button-sweet" onclick="demoSweetSelector()">SweetSelector</button>
@@ -33,66 +33,73 @@
     <h3>Hall of Elements</h3>
 
     <div class="container">
-      <div id="eyed">id: eyed</div>
-      <div class="klass">class: klass 1</div>
-      <a class="klass" href="#hello">Hello!</a>
-      <div class="klass">class: klass 2</div>
+        <div id="eyed">id: eyed</div>
+        <div class="klass">class: klass 1</div>
+        <a class="klass" href="#hello">Hello!</a>
+        <div class="klass">class: klass 2</div>
     </div>
 
-  </body>
+</body>
 
-  <script>
+<script>
     function demoSweetSelector() {
-      console.log(`SweetSelector.select('#eyed')`)
-      console.log(SweetSelector.select('#eyed'))
+        console.log(`SweetSelector.select('#eyed')`)
+        console.log(SweetSelector.select('#eyed'))
 
-      console.log(`SweetSelector.select('.klass')`)
-      console.log(SweetSelector.select('.klass'))
+        console.log(`SweetSelector.select('.klass')`)
+        console.log(SweetSelector.select('.klass'))
 
-      console.log(`SweetSelector.select('a')`)
-      console.log(SweetSelector.select('a'))
+        console.log(`SweetSelector.select('a')`)
+        console.log(SweetSelector.select('a'))
     }
 
     function demoDOM() {
-      DOM.hide('.klass')
-      DOM.show('.klass')
-      DOM.removeClass('.klass', 'shaded')
-      DOM.addClass('.klass', 'shaded')
+
+        DOM.hide('.klass')
+        // to see how it work actually
+        setTimeout(function() {
+            DOM.show('.klass')
+        }, 1500);
+        DOM.addClass('.klass', 'shaded')
+        setTimeout(function() {
+          DOM.removeClass('.klass', 'shaded')
+        }, 1500);
+
     }
 
     function demoEventDispatcher() {
-      EventDispatcher.on('.klass', 'click', function() {
-        console.log("Awesome")
-      })
+        EventDispatcher.on('.klass', 'click', function() {
+            console.log("Awesome")
+        })
     }
 
     function demoAjax() {
-      AjaxWrapper.request({
-        url: 'http://localhost:3000/',
-        type: 'GET',
-        success: function(data) {
-          console.log("Success: ", data)
-        },
-        fail: function() {
-          console.log("ERROR")
-        }
-      })
+        AjaxWrapper.request({
+            url: 'http://udin.us/spotpunch/api/hello',
+            type: 'GET',
+            success: function(data) {
+                console.log("Success: ", data)
+            },
+            fail: function() {
+                console.log("ERROR")
+            }
+        })
     }
 
     function demoMiniQuery() {
-      // miniquery
-      miniquery("#eyed").hide()
-      setTimeout(function() {
-        miniquery("#eyed").show()
-      }, 2000)
+        // miniquery
+        miniquery("#eyed").hide()
+        setTimeout(function() {
+            miniquery("#eyed").show()
+        }, 2000)
     }
 
     function demoAlias() {
-      $("#eyed").hide()
-      setTimeout(function() {
-        $("#eyed").show()
-      }, 2000)
+        $("#eyed").hide()
+        setTimeout(function() {
+            $("#eyed").show()
+        }, 2000)
     }
-  </script>
+</script>
 
 </html>
