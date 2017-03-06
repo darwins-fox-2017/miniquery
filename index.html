@@ -56,7 +56,7 @@
     function demoDOM() {
       DOM.hide('.klass')
       DOM.show('.klass')
-      // DOM.removeClass('.klass', 'shaded')
+      DOM.removeClass('.klass', 'shaded')
       DOM.addClass('.klass', 'shaded')
     }
 
@@ -68,7 +68,7 @@
 
     function demoAjax() {
       AjaxWrapper.request({
-        url: 'http://localhost:3000/',
+        url: 'http://swapi.co/api/people/1',
         type: 'GET',
         success: function(data) {
           console.log("Success: ", data)
